@@ -1,2 +1,0 @@
-Raindrops Game Project
-This game will have an array of falling raindrops that will move down the screen one at a time. There will also be a catcher that will follow the mouse, and the game will check to see if the raindrop touches the catcher. If the raindrop touches the catcher, the score will increase and the raindrop that was touching the catcher will disappear. After a certain amount of time, a new raindrop will appear.
