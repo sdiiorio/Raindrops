@@ -17,4 +17,8 @@ class Raindrop {
   void move() {
     loc.add(vel);
   }
+  void reset() {
+    loc.set(random(width), 0);
+    vel.set(0, random(1,4));
+  }
 }
