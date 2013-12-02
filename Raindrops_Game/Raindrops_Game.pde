@@ -19,9 +19,9 @@ void draw() {
     if ( r1[i].loc.y > height + r1[i].d) {
       r1[i].reset();
     }
-//    if (catcher.recognize(r1[i] == true) {
-//      r[i].reset();
-//    }
+    if (catcher1.recognize(r1[i]) == true) {
+      r1[i].reset();
+    }
   }
   catcher1.display();
   catcher1.update();
