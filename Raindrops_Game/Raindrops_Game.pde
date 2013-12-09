@@ -7,8 +7,9 @@ int currentTime=0;
 int changeTime = 0;
 int oldTime = 0;
 int displayTime = 0;
-//this is a boolean which will allow for a two different settings: a start screen and a game screen
+//these are the booleans necessary to create the raindrop game
 boolean startGame;
+boolean gameOver;
 //defines an image to be used as the background
 PImage sky;
 //this creates an array of 500 raindrops
@@ -20,7 +21,7 @@ Catcher catcher1;
 //these are the initial parameters/settings for the game
 void setup() { 
   sky = loadImage("sky.jpg");
-  size(sky.width,sky.height);
+  size(sky.width, sky.height);
   textAlign(CENTER);
   //this defines when a raindrop should be created as part of the array
   for (int i = 0; i < r1.length; i++) {
@@ -29,67 +30,86 @@ void setup() {
   //this defines the catcher
   catcher1 = new Catcher();
   startGame = false;
+  gameOver = false;
 }
 
 
 void draw() {
+  println(index);
   //if the startGame boolean has a value of true, the game will run.
   //if not, the start screen will display (see below)
-  if(startGame == true) {
-  background(sky);
-  //creating the score display in the top corner and the timing to display in the top right corner
-  textSize(30);
-  fill(255);
-  noStroke();
-  rect(20,30,100,50);
-  rect(width-130,30,120,50);
-  fill(0);
-  text(score,70,65);
-  text(currentTime/1000.0, 530, 65);
-  fill(255,0,0);
-  textSize(20);
-  text("Score",70,20);
-  text("Time",530,20);
-  //assigning values to the variables needed for timing
-  currentTime= millis();
-  changeTime= currentTime-oldTime; 
-  //this for loop allows for the raindrops to display and fall if the parameters are met
-  for (int i = 0; i < index; i++) {
-    r1[i].display();
-    r1[i].move();
-    //this code allows for the raindrops to go away when the catcher recognizes them as intersecting with the catcher
-    //the score will increase when this happens    
-    if (catcher1.recognize(r1[i]) == true) {
-      r1[i].goAway();
-      score++;
+  if (startGame == true) {
+    background(sky);
+    //creating the score display in the top corner and the timing to display in the top right corner
+    textSize(30);
+    fill(255);
+    noStroke();
+    rect(20, 30, 100, 50);
+    rect(width-130, 30, 120, 50);
+    fill(0);
+    text(score, 70, 65);
+    text(currentTime/1000.0, 530, 65);
+    fill(255, 0, 0);
+    textSize(20);
+    text("Score", 70, 20);
+    text("Time", 530, 20);
+    //assigning values to the variables needed for timing
+    currentTime= millis();
+    changeTime= currentTime-oldTime; 
+    //this for loop allows for the raindrops to display and fall if the parameters are met
+    for (int i = 0; i < index; i++) {
+      r1[i].display();
+      r1[i].move();
+      //this code allows for the raindrops to go away when the catcher recognizes them as intersecting with the catcher
+      //the score will increase when this happens    
+      if (catcher1.recognize(r1[i]) == true) {
+        r1[i].goAway();
+        score++;
+      }
     }
-  }
-  //this allows for raindrops to be dropped at a certain interval
+    //this allows for raindrops to be dropped at a certain interval
     if (changeTime > 2000) {
-    ellipse(random(width),random(height), 20,20);
-    oldTime = currentTime;
-    index++;
+      ellipse(random(width), random(height), 20, 20);
+      oldTime = currentTime;
+      index++;
+    }
+    //this calls the functions of the catcher
+    catcher1.display();
+    catcher1.update();
   }
-  //this calls the functions of the catcher
-  catcher1.display();
-  catcher1.update();
-}
   //this creates a start screen which will display if the boolean startGame is false
-  else{
+  else {
     background(0);
     fill(255);
-    fill(0,255,0);
-    rect(width/2-75,height/2-25,150,50);
+    fill(0, 255, 0);
+    rect(width/2-75, height/2-25, 150, 50);
     fill(0);
     textSize(30);
-    text("Start",width/2,height/2+10);
+    text("Start", width/2, height/2+10);
+  }
+  
+  //this will allow for the value of gameOver to change  
+  for (int i = 0; i < r1.length; i++) {
+    if (r1[i].loc.y > height) {
+//    gameOver = true;
+   }
+  }
+  //this creates a game over screen
+  if (gameOver == true) {
+    background(0);
+    fill(255, 0, 0);
+    rect(width/2-100, height/2-25, 170, 50);
+    fill(0);
+    textSize(30);
+    text("Game Over", width/2-15, height/2+10);
   }
 }
 
 
 //this allows for the value of startGame to be changed to true if you click on the start button
-void mousePressed(){
-  if(mouseX>255 && mouseX<375 && mouseY>275 && mouseY<325){
-      startGame = true;
+void mousePressed() {
+  if (mouseX>255 && mouseX<375 && mouseY>275 && mouseY<325) {
+    startGame = true;
   }
 }
+
