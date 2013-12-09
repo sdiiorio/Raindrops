@@ -35,7 +35,6 @@ void setup() {
 
 
 void draw() {
-  println(index);
   //if the startGame boolean has a value of true, the game will run.
   //if not, the start screen will display (see below)
   if (startGame == true) {
@@ -69,7 +68,6 @@ void draw() {
     }
     //this allows for raindrops to be dropped at a certain interval
     if (changeTime > 2000) {
-      ellipse(random(width), random(height), 20, 20);
       oldTime = currentTime;
       index++;
     }
@@ -91,7 +89,7 @@ void draw() {
   //this will allow for the value of gameOver to change  
   for (int i = 0; i < r1.length; i++) {
     if (r1[i].loc.y > height) {
-//    gameOver = true;
+    gameOver = true;
    }
   }
   //this creates a game over screen
