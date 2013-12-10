@@ -10,8 +10,10 @@ int displayTime = 0;
 //these are the booleans necessary to create the raindrop game
 boolean startGame;
 boolean gameOver;
-//defines an image to be used as the background
+//defines images to be used as the background
 PImage sky;
+PImage background1;
+PImage background2;
 //this creates an array of 500 raindrops
 Raindrop [] r1 = new Raindrop [500];
 //this creates a catcher
@@ -21,8 +23,11 @@ Catcher catcher1;
 //these are the initial parameters/settings for the game
 void setup() { 
   sky = loadImage("sky.jpg");
+  background1 = loadImage("rain_background.png");
+  background2 = loadImage("stormy_background.png");
   size(sky.width, sky.height);
   textAlign(CENTER);
+  noStroke();
   //this defines when a raindrop should be created as part of the array
   for (int i = 0; i < r1.length; i++) {
     r1[i] = new Raindrop();
@@ -42,7 +47,6 @@ void draw() {
     //creating the score display in the top corner and the timing to display in the top right corner
     textSize(30);
     fill(255);
-    noStroke();
     rect(20, 30, 100, 50);
     rect(width-130, 30, 120, 50);
     fill(0);
@@ -77,13 +81,16 @@ void draw() {
   }
   //this creates a start screen which will display if the boolean startGame is false
   else {
-    background(0);
+    size(background1.width,background1.height);
+    background(background1);
     fill(255);
     fill(0, 255, 0);
     rect(width/2-75, height/2-25, 150, 50);
     fill(0);
     textSize(30);
     text("Start", width/2, height/2+10);
+    fill(255);
+    text("Raindrops Game", width/2, 100);
   }
   
   //this will allow for the value of gameOver to change  
@@ -94,7 +101,7 @@ void draw() {
   }
   //this creates a game over screen
   if (gameOver == true) {
-    background(0);
+    background(background2);
     fill(255, 0, 0);
     rect(width/2-100, height/2-25, 170, 50);
     fill(0);
