@@ -23,8 +23,8 @@ Catcher catcher1;
 //these are the initial parameters/settings for the game
 void setup() { 
   sky = loadImage("sky.jpg");
-  background1 = loadImage("rain_background.png");
-  background2 = loadImage("stormy_background.png");
+  background1 = loadImage("raindrop_background.jpg");
+  background2 = loadImage("clear_sky.jpg");
   size(sky.width, sky.height);
   textAlign(CENTER);
   noStroke();
@@ -89,7 +89,7 @@ void draw() {
     fill(0);
     textSize(30);
     text("Start", width/2, height/2+10);
-    fill(255);
+    fill(255,0,0);
     text("Raindrops Game", width/2, 100);
   }
   

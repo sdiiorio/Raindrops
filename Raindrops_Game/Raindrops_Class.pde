@@ -30,7 +30,8 @@ class Raindrop {
 //this resets the location of a raindrop so that it is far off the screen
 //this will be used when the catcher recognizes/intersects the raindrop
   void goAway() {
-    loc.set(height*2,0);
+    loc.set(width*2,0);
+    vel.set(0,0);
   }
 }
 
