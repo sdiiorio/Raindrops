@@ -50,14 +50,14 @@ void draw() {
     textSize(30);
     fill(255);
     rect(20, 30, 100, 50);
-    rect(width-130, 30, 120, 50);
+    rect(width-120, 30, 100, 50);
     fill(0);
     text(score, 70, 65);
-    text(currentTime/1000.0, 530, 65);
+    text(lives, 530, 65);
     fill(255, 0, 0);
     textSize(20);
     text("Score", 70, 20);
-    text("Time", 530, 20);
+    text("Lives", 530, 20);
     //assigning values to the variables needed for timing
     currentTime= millis();
     changeTime= currentTime-oldTime; 
@@ -84,7 +84,7 @@ void draw() {
   }
   //this creates a start screen which will display if the boolean startGame is false
   else {
-    size(background1.width,background1.height);
+    size(background1.width, background1.height);
     background(background1);
     fill(255);
     fill(0, 255, 0);
@@ -92,17 +92,12 @@ void draw() {
     fill(0);
     textSize(30);
     text("Start", width/2, height/2+10);
-    fill(255,0,0);
+    fill(255, 0, 0);
     text("Raindrops Game", width/2, 100);
   }
-  
+
   //this will allow for the value of gameOver to change  
-//  for (int i = 0; i < r1.length; i++) {
-//    if (r1[i].loc.y > height) {
-//    gameOver = true;
-//   }
-//  }
-  if(lives == 0) {
+  if (lives == 0) {
     gameOver = true;
   }
   //this creates a game over screen
