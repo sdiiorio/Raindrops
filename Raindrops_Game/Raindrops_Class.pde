@@ -33,5 +33,12 @@ class Raindrop {
     loc.set(width*2,0);
     vel.set(0,0);
   }
+//this will allow you to decrease the lives varible and lose the game
+  void die() {
+    if(loc.y > height) {
+    lives--;
+    goAway();
+    }
+  }
 }
 

@@ -7,6 +7,7 @@ int currentTime=0;
 int changeTime = 0;
 int oldTime = 0;
 int displayTime = 0;
+int lives;
 //these are the booleans necessary to create the raindrop game
 boolean startGame;
 boolean gameOver;
@@ -22,6 +23,7 @@ Catcher catcher1;
 
 //these are the initial parameters/settings for the game
 void setup() { 
+  lives = 3;
   sky = loadImage("sky.jpg");
   background1 = loadImage("raindrop_background.jpg");
   background2 = loadImage("clear_sky.jpg");
@@ -63,6 +65,7 @@ void draw() {
     for (int i = 0; i < index; i++) {
       r1[i].display();
       r1[i].move();
+      r1[i].die();
       //this code allows for the raindrops to go away when the catcher recognizes them as intersecting with the catcher
       //the score will increase when this happens    
       if (catcher1.recognize(r1[i]) == true) {
@@ -94,10 +97,13 @@ void draw() {
   }
   
   //this will allow for the value of gameOver to change  
-  for (int i = 0; i < r1.length; i++) {
-    if (r1[i].loc.y > height) {
+//  for (int i = 0; i < r1.length; i++) {
+//    if (r1[i].loc.y > height) {
+//    gameOver = true;
+//   }
+//  }
+  if(lives == 0) {
     gameOver = true;
-   }
   }
   //this creates a game over screen
   if (gameOver == true) {
