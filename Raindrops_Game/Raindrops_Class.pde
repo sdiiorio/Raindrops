@@ -3,6 +3,7 @@
 class Raindrop {
 //these are the variables used in creating the raindrop class
   PVector loc, vel;
+  PImage raindrop;
   int d;
 
   Raindrop() {
@@ -10,13 +11,13 @@ class Raindrop {
 //dropping from a y value of -d will allow the raindrops to fall instead of appearing
     loc = new PVector(random(width), -d);
     vel = new PVector (0, random(1,4));
+    raindrop = loadImage("raindrop.png");
     d = 20;
   }
 //these are the functions that can be used in the regular code which allow the raindrops to perform various tasks
 //this displays the raindrop with a blue fill  
   void display() {
-    fill(10,0,250);
-    ellipse(loc.x, loc.y, d, d);
+    image(raindrop,loc.x,loc.y,d,d);
   }
 //this will allow the raindrop to fall
   void move() {
