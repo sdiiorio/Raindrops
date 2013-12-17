@@ -15,7 +15,7 @@ class Raindrop {
     d = 20;
   }
 //these are the functions that can be used in the regular code which allow the raindrops to perform various tasks
-//this displays the raindrop with a blue fill  
+//this displays the raindrop image  
   void display() {
     image(raindrop,loc.x,loc.y,d,d);
   }
