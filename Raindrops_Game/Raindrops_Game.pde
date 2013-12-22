@@ -24,6 +24,7 @@ Catcher catcher1;
 //these are the initial parameters/settings for the game
 void setup() { 
   lives = 3;
+  //these next three lines load the images needed for the backgrounds
   sky = loadImage("sky.jpg");
   background1 = loadImage("raindrop_background.jpg");
   background2 = loadImage("clear_sky.jpg");
@@ -36,11 +37,12 @@ void setup() {
   }
   //this defines the catcher
   catcher1 = new Catcher();
+  //this defines the initial values for the booleans
   startGame = false;
   gameOver = false;
 }
 
-
+//this is the portion of the code that needs to be repeated
 void draw() {
   //if the startGame boolean has a value of true, the game will run.
   //if not, the start screen will display (see below)
@@ -73,7 +75,7 @@ void draw() {
         score++;
       }
     }
-    //this allows for raindrops to be dropped at a certain interval
+    //this allows for raindrops to be dropped at a certain interval (specifically a time interval of 2 seconds
     if (changeTime > 2000) {
       oldTime = currentTime;
       index++;

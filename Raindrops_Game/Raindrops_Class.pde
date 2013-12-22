@@ -9,6 +9,7 @@ class Raindrop {
   Raindrop() {
 //these variables will allow you to create a raindrop at at a random x value and at -d
 //dropping from a y value of -d will allow the raindrops to fall instead of appearing
+//this section of code also loads the image for the raindrop to be used in the class
     loc = new PVector(random(width), -d);
     vel = new PVector (0, random(1,4));
     raindrop = loadImage("raindrop.png");

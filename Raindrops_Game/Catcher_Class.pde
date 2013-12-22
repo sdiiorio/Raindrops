@@ -7,7 +7,7 @@ class Catcher {
   int d;
 
   Catcher() {
-//these variables will allow you to create a catcher which follows your mouse in the x direction and stays in a fixed y position
+//these variables will allow you to create a catcher (and defining it as an image) which follows your mouse in the x direction and stays in a fixed y position
     loc = new PVector(mouseX,height-d);
     bucket = loadImage("bucket.png");
     d = 100;
