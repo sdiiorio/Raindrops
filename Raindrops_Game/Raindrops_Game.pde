@@ -110,6 +110,9 @@ void draw() {
     fill(0);
     textSize(30);
     text("Game Over", width/2-15, height/2+10);
+    rect(0,0,100,50);
+    fill(255,0,0);
+    text("Reset",50,30);
   }
 }
 
@@ -118,6 +121,15 @@ void draw() {
 void mousePressed() {
   if (mouseX>255 && mouseX<375 && mouseY>275 && mouseY<325) {
     startGame = true;
+  }
+  if (mouseX > 0 && mouseX < 100 && mouseY > 0 && mouseY < 50) {
+     for (int i = 0; i < index; i++) {
+    startGame = false;
+     gameOver = false;
+     lives = 3;  
+     score = 0;
+     r1[i].goAway();
+   }
   }
 }
 
